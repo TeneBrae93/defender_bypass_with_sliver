@@ -33,8 +33,6 @@ Usage
 
 Run the script using Python 3, providing your listener IP and Port:
 
-Bash
-
 ```
 python3 builder.py -l <LISTENER_IP> -p <LISTENER_PORT>
 
@@ -42,16 +40,12 @@ python3 builder.py -l <LISTENER_IP> -p <LISTENER_PORT>
 
 ### Example
 
-Bash
-
 ```
 python3 builder.py -l 192.168.1.5 -p 80
 
 ```
 
 ### Help Menu
-
-Bash
 
 ```
 python3 builder.py -h
