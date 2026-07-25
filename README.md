@@ -15,17 +15,17 @@ The original script required the **same port for both**:
 - C2 listener port
 - Shellcode web server port
 
-This caused conflicts in labs like **HTB ProLabs** where you only have certain ports available.
+This caused conflicts in labs like **HTB ProLabs or some senario** where you only have certain ports available.
 
 ### The Solution
 This modified version adds a **`-w` (--webport)** argument, allowing you to:
-- ✅ Run your C2 listener on one port (e.g., port 80)
-- ✅ Host shellcode on a different port (e.g., port 443)
-- ✅ Use whatever ports are available in your environment
+-  Run your C2 listener on one port (e.g., port 80)
+-  Host shellcode on a different port (e.g., port 443)
+-  Use whatever ports are available in your environment
 
 ---
 
-## ⚠️ Legal Disclaimer
+##  Legal Disclaimer
 
 This tool is intended **exclusively for authorized security testing and educational purposes** in controlled environments such as:
 - HackTheBox ProLabs
@@ -39,12 +39,12 @@ This tool is intended **exclusively for authorized security testing and educatio
 
 ## Features
 
-✅ **Separate Port Support** - Use different ports for listener and web server  
-✅ Windows executable generation with Defender evasion  
-✅ Cross-compilation from Linux to Windows  
-✅ Automatic dependency installation  
-✅ In-memory shellcode execution  
-✅ Integration with Sliver C2 framework  
+ **Separate Port Support** - Use different ports for listener and web server  
+ Windows executable generation with Defender evasion  
+ Cross-compilation from Linux to Windows  
+ Automatic dependency installation  
+ In-memory shellcode execution  
+ Integration with Sliver C2 framework  
 
 ---
 
